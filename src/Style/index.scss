@@ -1,0 +1,9 @@
+.body{
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    form{
+        display: flex;
+        flex-flow: column;
+    }
+}
