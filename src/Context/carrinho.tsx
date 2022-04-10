@@ -14,6 +14,7 @@ export interface Ichildren {
 const CarrinhoContexto = React.createContext<ICarrinhoContext>({
   carrinho: CarrinhoPadrao,
   item: itemPadrao,
+  decrement: () => {},
   increment: () => {},
   onChangeItem: () => {},
   addItemList: () => {},
@@ -30,10 +31,10 @@ const CarrinhoContextProvider = ({
 
   useEffect(() => {
     async function setCarrinho() {
-      setDadosCarrinho(CarrinhoPadrao);
+      setDadosCarrinho(  CarrinhoPadrao);
     }
-    setCarrinho();
-  }, []);
+    console.log(dadosCarrinho)
+  }, [dadosCarrinho]);
 
   function onChangeItem(e: React.ChangeEvent<HTMLInputElement>): void {
     const { name, value } = e.target;
@@ -41,10 +42,8 @@ const CarrinhoContextProvider = ({
   }
 
   function removeItem(key: number) {
-    setDadosCarrinho({
-      ...dadosCarrinho,
-      lista: [...dadosCarrinho.lista.slice(key + 1)],
-    });
+    dadosCarrinho.lista.splice(key,1)
+    setDadosCarrinho({...dadosCarrinho});
   }
 
   function addItemList() {
@@ -54,14 +53,22 @@ const CarrinhoContextProvider = ({
     });
   }
 
+  function decrementItem(id: number): void {
+    setDadosCarrinho({...dadosCarrinho, [id]:{
+      quantidade: dadosCarrinho.lista[id].quantidade--
+    }})
+  }
+
   function incrementItem(id: number): void {
-    const item = dadosCarrinho.lista.filter((item: Item) => item.id === id);
-    item[0].quantidade++;
+    setDadosCarrinho({...dadosCarrinho, [id]:{
+      quantidade: dadosCarrinho.lista[id].quantidade++
+    }})
   }
 
   return (
     <CarrinhoContexto.Provider
       value={{
+        decrement: decrementItem,
         carrinho: dadosCarrinho,
         item: item,
         increment: incrementItem,

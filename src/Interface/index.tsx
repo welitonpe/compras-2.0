@@ -1,5 +1,4 @@
 export type Item = {
-  id: number;
   nome: string;
   valor: number;
   quantidade: number;
@@ -7,11 +6,11 @@ export type Item = {
 
 export type ICarrinho = {
   lista: Item[];
-  valorTotal: number;
 };
 
 export type ICarrinhoContext = {
   carrinho: ICarrinho;
+  decrement: (id: number) => void;
   increment: (id: number) => void;
   onChangeItem: (e: React.ChangeEvent<HTMLInputElement>) => void;
   addItemList: () => void;
@@ -20,7 +19,6 @@ export type ICarrinhoContext = {
 };
 
 export const itemPadrao: Item = {
-  id: 0,
   nome: "",
   valor: 0,
   quantidade: 0,
@@ -29,30 +27,24 @@ export const itemPadrao: Item = {
 export const CarrinhoPadrao: ICarrinho = {
   lista: [
     {
-      id: 0,
       nome: "Farinha de trigo Boa Sorte",
       valor: 3.5,
       quantidade: 1,
     },
     {
-      id: 1,
-
       nome: "Feijão Mulatinho kicaldo",
       valor: 5.0,
       quantidade: 1,
     },
     {
-      id: 2,
       nome: "Batata Inglesa seila",
       valor: 2.0,
       quantidade: 1,
     },
     {
-      id: 3,
       nome: "Farofa temperada Zaely",
       valor: 0.5,
       quantidade: 1,
     },
   ],
-  valorTotal: 10,
 };
