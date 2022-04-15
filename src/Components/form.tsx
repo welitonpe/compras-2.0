@@ -34,6 +34,11 @@ const Form: React.FC = () => {
             name="valor"
             onChange={onChangeItem}
             placeholder="Valor Unitario"
+            value={item.valor.toLocaleString("pt-BR", {
+              minimumFractionDigits: 2,
+              style: "currency",
+              currency: "BRL",
+            })}
           ></input>
         </div>
         <button
@@ -45,18 +50,32 @@ const Form: React.FC = () => {
         </button>
       </form>
 
-      <div>
-        <ul className="list-group">
-          {carrinho.lista.map((element: Item, index: number) => {
-            return (
-              <li key={index} className="list-group-item">
-                <div className="d-flex flex-column">
-                  <div className="d-flex flex-row justify-content-between">
-                    <div>{element.nome}</div>
-                    <div>{element.valor}</div>
-                    <div>{element.quantidade}</div>
+      <div className="">
+        {carrinho.lista.map((element: Item, index: number) => {
+          return (
+            <div key={index} className="card card-1 mb-4">
+              <span className="position-absolute top-0 translate-middle badge rounded-pill bg-danger">
+                X<span className="visually-hidden">unread messages</span>
+              </span>
+
+              <div className="d-flex flex-column card-body">
+                <div className="d-flex flex-row justify-content-between">
+                  <div className="col-8">{element.nome}</div>
+                  <div className="col-3">
+                    {element.valor.toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      style: "currency",
+                      currency: "BRL",
+                    })}
                   </div>
-                  <div className="d-flex justify-content-end">
+                  <div className="col-1">{element.quantidade}</div>
+                </div>
+                <div className="d-flex justify-content-end">
+                  <div
+                    className="btn-group btn-group-lg d-flex justify-content-end"
+                    role="group"
+                    aria-label="..."
+                  >
                     <button
                       type="button"
                       className="btn btn-danger"
@@ -73,11 +92,10 @@ const Form: React.FC = () => {
                     </button>
                   </div>
                 </div>
-              </li>
-            );
-          })}
-          <li></li>
-        </ul>
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* <div className="">
