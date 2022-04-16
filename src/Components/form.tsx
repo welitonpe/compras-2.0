@@ -33,7 +33,7 @@ const Form: React.FC = () => {
         </form>
         <button
           type="button"
-          className="btn btn-primary ml-2"
+          className="btn btn-primary"
           onClick={() => addItemList()}
         >
           Add

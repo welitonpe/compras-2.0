@@ -11,10 +11,10 @@ const List: React.FC = () => {
     <div className="">
       {carrinho.lista.map((element: Item, index: number) => {
         return (
-          <div key={index} className="card card-1 mb-1">
-            <span className="position-absolute top-0 translate-middle badge rounded-pill bg-danger">
+          <div key={index} className="card card-1 mb-2">
+            {/* <span className="position-absolute top-0 translate-middle badge rounded-pill bg-danger">
               X<span className="visually-hidden">unread messages</span>
-            </span>
+            </span> */}
             <div className="d-flex flex-row card-body justify-content-between">
               <div
                 className="d-flex
