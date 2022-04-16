@@ -30,20 +30,21 @@ const CarrinhoContextProvider = ({
   const [item, setItem] = useState<Item>(itemPadrao);
 
   useEffect(() => {
-    async function setCarrinho() {
-      setDadosCarrinho(  CarrinhoPadrao);
-    }
-    console.log(dadosCarrinho)
+    // async function setCarrinho() {
+    //   setDadosCarrinho(CarrinhoPadrao);
+    // }
+    console.log(dadosCarrinho);
   }, [dadosCarrinho]);
 
   function onChangeItem(e: React.ChangeEvent<HTMLInputElement>): void {
     const { name, value } = e.target;
+
     setItem({ ...item, [name]: value });
   }
 
   function removeItem(key: number) {
-    dadosCarrinho.lista.splice(key,1)
-    setDadosCarrinho({...dadosCarrinho});
+    dadosCarrinho.lista.splice(key, 1);
+    setDadosCarrinho({ ...dadosCarrinho });
   }
 
   function addItemList() {
@@ -54,15 +55,21 @@ const CarrinhoContextProvider = ({
   }
 
   function decrementItem(id: number): void {
-    setDadosCarrinho({...dadosCarrinho, [id]:{
-      quantidade: dadosCarrinho.lista[id].quantidade--
-    }})
+    setDadosCarrinho({
+      ...dadosCarrinho,
+      [id]: {
+        quantidade: dadosCarrinho.lista[id].quantidade--,
+      },
+    });
   }
 
   function incrementItem(id: number): void {
-    setDadosCarrinho({...dadosCarrinho, [id]:{
-      quantidade: dadosCarrinho.lista[id].quantidade++
-    }})
+    setDadosCarrinho({
+      ...dadosCarrinho,
+      [id]: {
+        quantidade: dadosCarrinho.lista[id].quantidade++,
+      },
+    });
   }
 
   return (
