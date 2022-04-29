@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { CarrinhoContexto } from "../Context/carrinho";
-import { Item } from "../Interface";
 
 const Form: React.FC = () => {
   const { item, onChangeItem, addItemList } = useContext(CarrinhoContexto);
@@ -8,7 +7,7 @@ const Form: React.FC = () => {
   return (
     <>
       <div className="d-flex flex-row justify-content-between">
-        <form className="mr-3 col-10">
+        <form className="col-10" autoComplete="off">
           <div className="mb-3">
             <input
               type="text"
@@ -17,9 +16,10 @@ const Form: React.FC = () => {
               name="nome"
               onChange={onChangeItem}
               placeholder="Nome"
+              autoComplete="off"
             />
           </div>
-          <div className="">
+          <div className=" ml-3">
             <input
               type="number"
               className="form-control"
@@ -33,7 +33,7 @@ const Form: React.FC = () => {
         </form>
         <button
           type="button"
-          className="btn btn-primary"
+          className="ml-3 btn btn-primary col-2"
           onClick={() => addItemList()}
         >
           Add

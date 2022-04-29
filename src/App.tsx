@@ -1,6 +1,13 @@
 import Form from "./Components/form";
 import List from "./Components/List";
+import { useContext } from "react";
+import { CarrinhoContexto } from "./Context/carrinho";
 function App() {
+  const { carrinho } = useContext(CarrinhoContexto);
+  const valorTotal = carrinho.lista.map((element) => {
+    return element.valor;
+  });
+  console.log(valorTotal);
   return (
     <div className="App container overflow-hidden">
       <div className="body">

@@ -23,27 +23,36 @@ const List: React.FC = () => {
                 <img src={img} alt="" style={{ height: 100 }} />
               </div>
 
-              <div className="d-flex flex-column justify-content-between col-7 px-1">
+              <div className="d-flex flex-column justify-content-between col-7 px-2">
                 <div className="col-12">{element.nome}</div>
                 <div className="d-flex flex-column">
-                  <div className="">
-                    {element.valor.toLocaleString("pt-BR", {
-                      minimumFractionDigits: 2,
-                      style: "currency",
-                      currency: "BRL",
-                    })}
-                  </div>{" "}
-                  <div className="">{element.quantidade}</div>
-                  <hr />
-                  <div className="">
-                    {(element.quantidade * element.valor).toLocaleString(
-                      "pt-BR",
-                      {
+                  <div className="d-flex flex-row justify-content-between">
+                    <div>Valor Unitario</div>
+                    <div className="">
+                      {element.valor.toLocaleString("pt-BR", {
                         minimumFractionDigits: 2,
                         style: "currency",
                         currency: "BRL",
-                      }
-                    )}
+                      })}
+                    </div>
+                  </div>
+                  <div className="d-flex flex-row justify-content-between">
+                    <div>Quantidade</div>
+
+                    <div className="">{element.quantidade}</div>
+                  </div>
+                  <div className="d-flex flex-row justify-content-between">
+                    <div>Valor Total</div>
+                    <div className="">
+                      {(element.quantidade * element.valor).toLocaleString(
+                        "pt-BR",
+                        {
+                          minimumFractionDigits: 2,
+                          style: "currency",
+                          currency: "BRL",
+                        }
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -33,13 +33,18 @@ const CarrinhoContextProvider = ({
     // async function setCarrinho() {
     //   setDadosCarrinho(CarrinhoPadrao);
     // }
+
+    console.log(item);
     console.log(dadosCarrinho);
-  }, [dadosCarrinho]);
+  }, [dadosCarrinho, item]);
 
   function onChangeItem(e: React.ChangeEvent<HTMLInputElement>): void {
     const { name, value } = e.target;
+    if (name === "valor") {
+      return setItem({ ...item, [name]: Number.parseFloat(value) });
+    }
 
-    setItem({ ...item, [name]: value });
+    return setItem({ ...item, [name]: value });
   }
 
   function removeItem(key: number) {
@@ -55,21 +60,13 @@ const CarrinhoContextProvider = ({
   }
 
   function decrementItem(id: number): void {
-    setDadosCarrinho({
-      ...dadosCarrinho,
-      [id]: {
-        quantidade: dadosCarrinho.lista[id].quantidade--,
-      },
-    });
+    dadosCarrinho.lista[id].quantidade--;
+    setDadosCarrinho({ ...dadosCarrinho });
   }
 
   function incrementItem(id: number): void {
-    setDadosCarrinho({
-      ...dadosCarrinho,
-      [id]: {
-        quantidade: dadosCarrinho.lista[id].quantidade++,
-      },
-    });
+    dadosCarrinho.lista[id].quantidade++;
+    setDadosCarrinho({ ...dadosCarrinho });
   }
 
   return (
