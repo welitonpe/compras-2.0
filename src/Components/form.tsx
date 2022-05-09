@@ -6,8 +6,8 @@ const Form: React.FC = () => {
 
   return (
     <>
-      <div className="d-flex flex-row justify-content-between">
-        <form className="col-10" autoComplete="off">
+      <div className="d-flex flex-row justify-content-between gap-2">
+        <form className="" autoComplete="off">
           <div className="mb-3">
             <input
               type="text"
@@ -31,13 +31,15 @@ const Form: React.FC = () => {
             ></input>
           </div>
         </form>
-        <button
-          type="button"
-          className="ml-3 btn btn-primary col-2"
-          onClick={() => addItemList()}
-        >
-          Add
-        </button>
+        <div className="d-flex justify-content-end ">
+          <button
+            type="button"
+            className=" btn btn-primary w-100"
+            onClick={() => addItemList()}
+          >
+            Add
+          </button>
+        </div>
       </div>
     </>
   );

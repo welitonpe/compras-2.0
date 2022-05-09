@@ -16,6 +16,15 @@ export type ICarrinhoContext = {
   addItemList: () => void;
   removeItem: (id: number) => void;
   item: Item;
+  total: ValorTotal;
+};
+
+export type ValorTotal = {
+  totalValue: number;
+};
+
+export const totalValue: ValorTotal = {
+  totalValue: 0,
 };
 
 export const itemPadrao: Item = {

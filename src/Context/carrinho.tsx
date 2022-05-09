@@ -5,6 +5,8 @@ import {
   ICarrinho,
   CarrinhoPadrao,
   ICarrinhoContext,
+  ValorTotal,
+  totalValue,
 } from "../Interface";
 
 export interface Ichildren {
@@ -19,6 +21,7 @@ const CarrinhoContexto = React.createContext<ICarrinhoContext>({
   onChangeItem: () => {},
   addItemList: () => {},
   removeItem: () => {},
+  total: totalValue,
 });
 
 const CarrinhoContextProvider = ({
@@ -28,20 +31,28 @@ const CarrinhoContextProvider = ({
 }) => {
   const [dadosCarrinho, setDadosCarrinho] = useState<ICarrinho>(CarrinhoPadrao);
   const [item, setItem] = useState<Item>(itemPadrao);
+  const [valorTotal, SetValorTotal] = useState<ValorTotal>({ totalValue: 0 });
+
+  function UpdateToralValue() {
+    let val = dadosCarrinho.lista
+      .map(({ quantidade, valor }) => quantidade * valor)
+      .reduce((valorA, valorB) => valorA + valorB);
+    console.log(val);
+    SetValorTotal({ totalValue: val });
+  }
 
   useEffect(() => {
-    // async function setCarrinho() {
-    //   setDadosCarrinho(CarrinhoPadrao);
-    // }
+    dadosCarrinho.lista.length && UpdateToralValue();
+  }, [dadosCarrinho]);
 
-    console.log(item);
-    console.log(dadosCarrinho);
-  }, [dadosCarrinho, item]);
-
-  function onChangeItem(e: React.ChangeEvent<HTMLInputElement>): void {
+  function onChangeItem(e: any): void {
     const { name, value } = e.target;
+
     if (name === "valor") {
-      return setItem({ ...item, [name]: Number.parseFloat(value) });
+      return setItem({
+        ...item,
+        [name]: Number.parseFloat(value),
+      });
     }
 
     return setItem({ ...item, [name]: value });
@@ -62,11 +73,13 @@ const CarrinhoContextProvider = ({
   function decrementItem(id: number): void {
     dadosCarrinho.lista[id].quantidade--;
     setDadosCarrinho({ ...dadosCarrinho });
+    UpdateToralValue();
   }
 
   function incrementItem(id: number): void {
     dadosCarrinho.lista[id].quantidade++;
     setDadosCarrinho({ ...dadosCarrinho });
+    UpdateToralValue();
   }
 
   return (
@@ -79,6 +92,7 @@ const CarrinhoContextProvider = ({
         onChangeItem: onChangeItem,
         addItemList: addItemList,
         removeItem: removeItem,
+        total: valorTotal,
       }}
     >
       {children}
