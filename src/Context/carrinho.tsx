@@ -37,7 +37,6 @@ const CarrinhoContextProvider = ({
     let val = dadosCarrinho.lista
       .map(({ quantidade, valor }) => quantidade * valor)
       .reduce((valorA, valorB) => valorA + valorB);
-    console.log(val);
     SetValorTotal({ totalValue: val });
   }
 

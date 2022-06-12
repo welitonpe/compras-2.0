@@ -35,25 +35,25 @@ export const itemPadrao: Item = {
 
 export const CarrinhoPadrao: ICarrinho = {
   lista: [
-    // {
-    //   nome: "Farinha de trigo Boa Sorte",
-    //   valor: 3.5,
-    //   quantidade: 1,
-    // },
-    // {
-    //   nome: "Feijão Mulatinho kicaldo",
-    //   valor: 5.0,
-    //   quantidade: 1,
-    // },
-    // {
-    //   nome: "Batata Inglesa seila",
-    //   valor: 2.0,
-    //   quantidade: 1,
-    // },
-    // {
-    //   nome: "Farofa temperada Zaely",
-    //   valor: 0.5,
-    //   quantidade: 1,
-    // },
+    {
+      nome: "Farinha de trigo Boa Sorte",
+      valor: 3.5,
+      quantidade: 1,
+    },
+    {
+      nome: "Feijão Mulatinho kicaldo",
+      valor: 5.0,
+      quantidade: 1,
+    },
+    {
+      nome: "Batata Inglesa seila",
+      valor: 2.0,
+      quantidade: 1,
+    },
+    {
+      nome: "Farofa temperada Zaely",
+      valor: 0.5,
+      quantidade: 1,
+    },
   ],
 };
