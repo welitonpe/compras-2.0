@@ -1,9 +1,9 @@
 import { createTheme, ThemeProvider } from "@mui/material";
-
-const theme = createTheme({
+import React from "react";
+export const theme = createTheme({
 	palette: {
 		primary: {
-			light: "#85beff",
+			light: "#000",
 			main: "#3f50b5",
 			dark: "#002884",
 			contrastText: "#fff",
@@ -17,7 +17,7 @@ const theme = createTheme({
 	},
 });
 type ThemeContextProviderProps = {
-	children: JSX.Element;
+	children?: JSX.Element | JSX.Element[];
 };
 const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({
 	children,
