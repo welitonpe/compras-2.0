@@ -1,18 +1,17 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
-import Layout from "./Components/Layout/Layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./Components/Layout";
 import Home from "./Pages/Home";
-import React from "react";
 
 const AppRouter = () => {
-	return (
-		<HashRouter>
-			<Routes>
-				<Route element={<Layout />} path="/">
-					<Route element={<Home />} index />
-				</Route>
-			</Routes>
-		</HashRouter>
-	);
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />} path="/">
+          <Route element={<Home />} index />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default AppRouter;
